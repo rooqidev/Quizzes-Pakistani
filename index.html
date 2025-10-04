@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Quiz Rounds</title>
+  
+  <!-- HTML -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .container {
+      width: auto;
+      height: 600px;
+      border: 2px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: black;
+    }
+    
+    .Game {
+      width: 360px;
+      height: 600px;
+      border: 2px solid black;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background-color: black;
+    }
+    
+    .s1 {
+      width: 350px;
+      height: 220px;
+      border: 2px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .quiz {
+      width: 200px;
+      height: 220px;
+      border: 2px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background-color: green;
+      color: white;
+      border-top-left-radius: 10px;
+    }
+    
+    .righ-wro {
+      width: 200px;
+      height: 220px;
+      border: 2px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background-color: lightgreen;
+      border-top-right-radius: 10px;
+    }
+    
+    .s2 {
+      width: 350px;
+      height: 50px;
+      border: 2px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      text-align: center;
+      background-color: green;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    
+    button {
+      padding: 5px 20px;
+      background: White;
+      border: none;
+      border-radius: 10px;
+    }
+    
+    input {
+      padding: 5px 20px;
+      background: white;
+      border: none;
+      border-radius: 10px;
+    }
+    .correctorin{
+      font-size: 100px;
+    }
+  </style>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="Game">
+      <section class="s1">
+        <div class="Quizzes">
+          <p class="quiz"></p>
+        </div>
+        <div class="righ-wro">
+          <h2 class="correctorin"></h2>
+        </div>
+      </section>
+      <section class="s2">
+        <div class="input">
+          <input type="text" id="ans" />
+        </div>
+        <button onclick="showQuiz()">Next Quiz</button>
+      </section>
+    </div>
+  </div>
+  <!-- Project -->
+  <script>
+    let quizes = [
+    {
+      quiz: "Which is the biggest city in Pakistan?",
+      answer: "Karachi"
+    },
+    {
+      quiz: "Which city is the capital of Pakistan?",
+      answer: "Islamad"
+    },
+    {
+      quiz: "Which is the biggest state of Pakistan?",
+      answer: "Punjab"
+    },
+    {
+      quiz: "Which is the biggest court in Pakistan?",
+      answer: "Supreme court"
+    },
+    {
+      quiz: "Which is the biggest Mountain in Pakistan?",
+      answer: "K2"
+    },
+    {
+      quiz: "Which is the Switzerland of Pakistan?",
+      answer: "Murry"
+    },
+   {
+      quiz: "Most spoken language in Pakistan?",
+      answer: "Urdu"
+    }
+    ]
+   
+    let i = 0;
+    document.querySelector(".quiz").innerText = quizes[i].quiz;
+    function showQuiz(){
+      let answer = document.getElementById("ans").value;
+      let capitalized = answer.charAt(0).toUpperCase() + answer.slice(1);
+      if(capitalized === quizes[i].answer){
+        i++;
+        document.querySelector(".quiz").innerText = quizes[i].quiz;
+        document.querySelector(".correctorin").innerText = "👍";
+        document.getElementById("ans").value = "";
+        
+      }else{
+        document.querySelector(".correctorin").innerText = "👎";
+      }
+    };
+  </script>
+</body>
+
+</html>
